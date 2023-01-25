@@ -8,7 +8,7 @@ compiler_linux=g++
 font_reader_cpp_path=./src/Font_Reader/leitor_de_fontes_TMP_linux.cpp
 
 
-includes=-I./src/Font_Reader -I./src/Theo_Master_Peace -I./src/Theo_Master_Peace_Core -I./include -I./include/freetype
+includes=-I./src/
 
 built_path=./built
 
