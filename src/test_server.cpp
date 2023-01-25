@@ -17,16 +17,15 @@ std::size_t received;
 
 
 int main() {
-    std::cout << "Hello World!\n";
     if (sfml_socket.bind(PORT) != sf::Socket::Done)
     {
-        ERROR
+        std::cout << "error in port: " << PORT << "\n";
     }
-    std::cout << "Received " << received << " bytes" << std::endl;
+    std::cout << "Hello World!\n";
     sf::IpAddress sender = HOST;
-    if (sfml_socket.receive(data, DATA_SIZE, received, sender, PORT) != sf::Socket::Done)
+    if (sfml_socket.receive(data, 100, received, sender, PORT) != sf::Socket::Done)
     {
-        ERROR
+        // error...
     }
     std::cout << "Received " << received << " bytes from " << sender << " on port " << PORT << std::endl;
     return 0;
