@@ -30,5 +30,6 @@ int main() {
     std::cout << "Received " << bytes_recived << " bytes\n";
     std::string d = data;
     std::cout << "and mensage: " << base64_decode(data) << "\n";
+    sfml_soket.disconnect();
     return 0;
 }
