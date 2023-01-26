@@ -9,14 +9,16 @@
         #include <sys/socket.h>
 #endif
 
-sf::UdpSocket sfml_socket;
+sf::TcpSocket sfml_soket;
+sf::IpAddress ip = HOST;
+
+
+
 char data[DATA_SIZE] = "ola aqui e o cliente";
+sf::Socket::Status status;
 
 int main() {
-    sf::IpAddress recipient = HOST;
-    if (sfml_socket.send(data, DATA_SIZE, recipient, PORT) != sf::Socket::Done)
-    {
-        ERROR
-        std::cout << "send\n";
-    }
+    status = sfml_soket.connect(HOST, PORT);
+    sfml_soket.send(data, DATA_SIZE);
+    return 0;
 }

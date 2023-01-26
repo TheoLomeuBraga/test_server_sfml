@@ -9,24 +9,23 @@
         #include <sys/socket.h>
 #endif
 
-sf::UdpSocket sfml_socket;
+
+sf::TcpSocket sfml_soket;
+sf::IpAddress ip = HOST;
+size_t bytes_recived;
+
 char data[DATA_SIZE];
+sf::TcpListener listener;
 
-std::size_t received;
-
+sf::Socket::Status status;
 
 
 int main() {
-    if (sfml_socket.bind(PORT) != sf::Socket::Done)
-    {
-        std::cout << "error in port: " << PORT << "\n";
-    }
-    std::cout << "Hello World!\n";
-    sf::IpAddress sender = HOST;
-    if (sfml_socket.receive(data, 100, received, sender, PORT) != sf::Socket::Done)
-    {
-        // error...
-    }
-    std::cout << "Received " << received << " bytes from " << sender << " on port " << PORT << std::endl;
+    status = sfml_soket.connect(HOST, PORT);
+    listener.listen(PORT);
+    listener.accept(sfml_soket);
+    sfml_soket.receive(data, DATA_SIZE, bytes_recived);
+    std::cout << "Received " << bytes_recived << " bytes\n";
+    std::cout << "and mensage: " << data << "\n";
     return 0;
 }
