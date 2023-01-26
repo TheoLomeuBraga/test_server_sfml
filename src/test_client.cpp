@@ -14,9 +14,9 @@
 sf::TcpSocket sfml_soket;
 sf::IpAddress ip = HOST;
 
-std::string mensage = "ola aqui e o cliente";
+std::string mensage = "ola aqui e o cliente C++";
 
-char data[DATA_SIZE] = "ola aqui e o cliente";
+
 sf::Socket::Status status;
 
 int main() {

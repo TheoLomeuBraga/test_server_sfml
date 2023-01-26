@@ -14,10 +14,12 @@ print("Connection from: " + str(address))
 
 
 
-data = conn.recv(DATA_SIZE).decode('ascii')
-data = base64.b64decode(data)
+#data = str(conn.recv(DATA_SIZE).decode('ascii'))
+#data = base64.b64decode(data)
+data = base64.b64decode(conn.recv(DATA_SIZE))
+data = data.decode('ascii')
 
-print("from connected user: " + str(data))
+print("from connected user: " + data)
 conn.close()
 
 
