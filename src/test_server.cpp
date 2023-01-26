@@ -8,6 +8,8 @@
 #else
         #include <sys/socket.h>
 #endif
+#include "base_64.h"
+std::string mensage;
 
 
 sf::TcpSocket sfml_soket;
@@ -26,6 +28,7 @@ int main() {
     listener.accept(sfml_soket);
     sfml_soket.receive(data, DATA_SIZE, bytes_recived);
     std::cout << "Received " << bytes_recived << " bytes\n";
-    std::cout << "and mensage: " << data << "\n";
+    std::string d = data;
+    std::cout << "and mensage: " << base64_decode(data) << "\n";
     return 0;
 }

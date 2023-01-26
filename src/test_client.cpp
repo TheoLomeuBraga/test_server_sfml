@@ -9,16 +9,18 @@
         #include <sys/socket.h>
 #endif
 
+#include "base_64.h"
+
 sf::TcpSocket sfml_soket;
 sf::IpAddress ip = HOST;
 
-
+std::string mensage = "ola aqui e o cliente";
 
 char data[DATA_SIZE] = "ola aqui e o cliente";
 sf::Socket::Status status;
 
 int main() {
     status = sfml_soket.connect(HOST, PORT);
-    sfml_soket.send(data, DATA_SIZE);
+    sfml_soket.send(base64_encode((const unsigned char *)(mensage.c_str()),mensage.size()).c_str(), DATA_SIZE);
     return 0;
 }
